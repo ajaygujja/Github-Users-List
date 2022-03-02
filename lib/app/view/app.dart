@@ -7,7 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:github_user_project/counter/counter.dart';
-import 'package:github_user_project/l10n/l10n.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
