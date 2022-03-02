@@ -7,6 +7,8 @@ enum Method { POST, GET, PUT, DELETE, PATCH }
 const _defaultConnectTimeout = Duration.millisecondsPerMinute;
 const _defaultReceiveTimeout = Duration.millisecondsPerMinute;
 
+const BASE_URL = 'https://api.github.com/';
+
 class DioClient {
   late Dio? _dio;
   final String baseUrl;
