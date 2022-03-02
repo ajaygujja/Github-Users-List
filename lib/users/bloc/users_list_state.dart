@@ -13,7 +13,7 @@ class UsersListLoading extends UsersListState {
   List<Object?> get props => [];
 }
 
-class UsersListSuccess extends Equatable {
+class UsersListSuccess extends UsersListState {
   final List<UsersModel> usersList;
 
   UsersListSuccess({required this.usersList});
@@ -21,7 +21,7 @@ class UsersListSuccess extends Equatable {
   List<Object> get props => [usersList];
 }
 
-class UsersListFailed extends Equatable {
+class UsersListFailed extends UsersListState {
   @override
   List<Object?> get props => [];
 }

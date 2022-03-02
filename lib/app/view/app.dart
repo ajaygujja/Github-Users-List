@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:github_user_project/counter/counter.dart';
+import 'package:github_user_project/users/view/users.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class App extends StatelessWidget {
           accentColor: const Color(0xFF13B9FF),
         ),
       ),
-      home: const CounterPage(),
+      home: const Users(),
     );
   }
 }

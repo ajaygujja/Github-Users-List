@@ -48,10 +48,8 @@ class SearchResultsParser {
   }
 
   List<UsersModel> _decodeAndParseJson(String encodedJson) {
-    final jsonData = List<UsersModel>.from(json
-            .decode(encodedJson)
-            .map((Map<String, dynamic> x) => UsersModel.fromJson(x))
-        as Iterable<dynamic>);
+    final List<UsersModel> jsonData = List<UsersModel>.from(
+        json.decode(encodedJson).map((x) => UsersModel.fromJson(x)));
 
     return jsonData;
   }
