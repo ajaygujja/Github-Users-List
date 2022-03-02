@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:github_user_project/domain/api_result.dart';
 import 'package:github_user_project/domain/remote_repository.dart';
 import 'package:github_user_project/domain/web_services.dart';
 import 'package:github_user_project/services/dio_client.dart';
@@ -29,7 +30,7 @@ class ApiRepository extends IDataSource {
   }
 
   @override
-  Future<UsersModel> getUsersList() {
+  Future<ApiResult<List<UsersModel>>> getUsersList() {
     return _webService.getUsersList();
   }
 }

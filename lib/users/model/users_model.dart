@@ -1,3 +1,4 @@
+import 'package:github_user_project/services/network_exception.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'users_model.g.dart';
@@ -14,13 +15,13 @@ class UsersModel {
     required this.type,
   });
 
-  final String login;
-  final int id;
-  final String avatarUrl;
-  final String gravatarId;
-  final String followersUrl;
-  final String followingUrl;
-  final Type type;
+  String? login;
+  int? id;
+  String? avatarUrl;
+  String? gravatarId;
+  String? followersUrl;
+  String? followingUrl;
+  Type? type;
 
   factory UsersModel.fromJson(Map<String, dynamic> json) =>
       _$UsersModelFromJson(json);
