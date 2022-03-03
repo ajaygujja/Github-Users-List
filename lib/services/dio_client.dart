@@ -46,14 +46,16 @@ class DioClient {
           return handler.next(response);
         },
         onError: (err, handler) {
-          logger.i('Error[${err.response?.statusCode}]');
+          logger.i(
+              'Error[${err.response?.statusCode}] \nResponse Text: [${err.response?.data}]');
+          // logger.i('Response Text: [${err.response?.data}]');
           return handler.next(err);
         },
       ),
     );
   }
 
-  Future<Response> request({
+  Future<dynamic> request({
     required String url,
     required Method method,
     Map<String, dynamic>? params,
@@ -69,28 +71,13 @@ class DioClient {
       } else {
         response = await _dio!.get(url, queryParameters: params);
       }
-
-      if (response.statusCode == 200) {
-        return response;
-      } else if (response.statusCode == 401) {
-        throw Exception('Unauthorized');
-      } else if (response.statusCode == 500) {
-        throw Exception('Server Error');
-      } else {
-        throw Exception("Something does wen't wrong");
-      }
+      return response;
     } on SocketException catch (e) {
-      logger.e(e);
-      throw Exception('Not Internet Connection');
-    } on FormatException catch (e) {
-      logger.e(e);
-      throw Exception('Bad response format');
-    } on DioError catch (e) {
-      logger.e(e);
-      throw Exception(e);
+      throw SocketException(e.toString());
+    } on FormatException {
+      throw const FormatException('Bad response format');
     } catch (e) {
-      logger.e(e);
-      throw Exception("Something wen't wrong");
+      rethrow;
     }
   }
 }

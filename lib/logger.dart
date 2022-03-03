@@ -5,6 +5,6 @@ final logger = Logger(
     methodCount: 0,
     errorMethodCount: 5,
     lineLength: 50,
-    printTime: true,
+    printTime: false,
   ),
 );

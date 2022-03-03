@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_user_project/repository/api_repository.dart';
 import 'package:github_user_project/services/network_exception.dart';
 import 'package:github_user_project/users/bloc/users_list_bloc.dart';
-import 'package:github_user_project/users/model/users_model.dart';
+import 'package:github_user_project/users/view/users_list.dart';
 
 class Users extends StatelessWidget {
   const Users({Key? key}) : super(key: key);
@@ -48,51 +48,6 @@ class _UserPageState extends State<UserPage> {
             return const Center(child: CircularProgressIndicator());
           },
         ),
-      ),
-    );
-  }
-}
-
-class UsersList extends StatelessWidget {
-  const UsersList({
-    Key? key,
-    required this.userList,
-  }) : super(key: key);
-
-  final List<UsersModel> userList;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: userList.length,
-      itemBuilder: (BuildContext context, int index) {
-        return UsersListTile(user: userList[index]);
-      },
-    );
-  }
-}
-
-class UsersListTile extends StatelessWidget {
-  const UsersListTile({
-    Key? key,
-    required this.user,
-  }) : super(key: key);
-
-  final UsersModel user;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(
-          user.avatarUrl ??
-              "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/default-avatar.png",
-        ),
-      ),
-      title: Text(
-        user.login!,
-        style: Theme.of(context).textTheme.headline6,
       ),
     );
   }

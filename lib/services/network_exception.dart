@@ -42,11 +42,10 @@ abstract class NetworkExceptions with _$NetworkExceptions {
 
   const factory NetworkExceptions.unexpectedError() = UnexpectedError;
 
-  static NetworkExceptions? getDioException(dynamic error) {
-    logger.d(error);
+  static NetworkExceptions? getDioException(error) {
+    NetworkExceptions? networkExceptions;
     if (error is Exception) {
       try {
-        NetworkExceptions? networkExceptions;
         if (error is DioError) {
           switch (error.type) {
             case DioErrorType.connectTimeout:
@@ -78,7 +77,6 @@ abstract class NetworkExceptions with _$NetworkExceptions {
         }
         return networkExceptions;
       } on FormatException catch (e) {
-        logger.e(e.toString());
         return const NetworkExceptions.formatException();
       } catch (_) {
         return const NetworkExceptions.unexpectedError();
