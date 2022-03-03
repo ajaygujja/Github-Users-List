@@ -12,10 +12,7 @@ class WebServices extends IDataSource {
 
   WebServices({
     required this.dioClient,
-  }) : assert(
-          dioClient != null,
-          "DioClient cannot be null",
-        );
+  }) : assert(dioClient != null, "DioClient cannot be null");
 
   @override
   Future<ApiResult<List<UsersModel>>> getUsersList() async {

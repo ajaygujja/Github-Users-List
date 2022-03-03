@@ -1,4 +1,3 @@
-import 'package:github_user_project/services/network_exception.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'users_model.g.dart';
@@ -9,7 +8,6 @@ class UsersModel {
     required this.login,
     required this.id,
     required this.avatarUrl,
-    required this.gravatarId,
     required this.followersUrl,
     required this.followingUrl,
     required this.type,
@@ -17,9 +15,11 @@ class UsersModel {
 
   String? login;
   int? id;
+  @JsonKey(name: 'avatar_url')
   String? avatarUrl;
-  String? gravatarId;
+  @JsonKey(name: 'followers_url')
   String? followersUrl;
+  @JsonKey(name: 'following_url')
   String? followingUrl;
   Type? type;
 

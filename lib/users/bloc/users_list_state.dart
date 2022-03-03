@@ -22,6 +22,10 @@ class UsersListSuccess extends UsersListState {
 }
 
 class UsersListFailed extends UsersListState {
+  final NetworkExceptions errorMsg;
+  UsersListFailed({
+    required this.errorMsg,
+  });
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [errorMsg];
 }

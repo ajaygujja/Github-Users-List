@@ -14,7 +14,7 @@ class UsersListBloc extends Bloc<UsersListEvent, UsersListState> {
 
   UsersListBloc(this.apiRepository) : super(UsersListInitial()) {
     on<UsersListEvent>((event, emit) async {
-      if (event is fetchUsersList) {
+      if (event is FetchUsersList) {
         emit(UsersListLoading());
 
         ApiResult<List<UsersModel>> apiResult =
@@ -23,7 +23,7 @@ class UsersListBloc extends Bloc<UsersListEvent, UsersListState> {
         apiResult.when(success: (List<UsersModel> data) async {
           emit(UsersListSuccess(usersList: data));
         }, failure: (NetworkExceptions error) async {
-          emit(UsersListFailed());
+          emit(UsersListFailed(errorMsg: error));
         });
       }
     });
